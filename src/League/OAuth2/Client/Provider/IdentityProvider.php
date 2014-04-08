@@ -72,7 +72,7 @@ abstract class IdentityProvider
             'approval_prompt' => 'auto'
         );
 
-        return $this->urlAuthorize().'?'.http_build_query($params,'','&',PHP_QUERY_RFC1738);
+        return $this->urlAuthorize().'?'.http_build_query($params,'','&');
     }
 
     public function authorize($options = array())
@@ -105,7 +105,7 @@ abstract class IdentityProvider
         try {
             switch ($this->method) {
                 case 'get':
-                    $client = new GuzzleClient($this->urlAccessToken() . '?' . http_build_query($requestParams,'','&',PHP_QUERY_RFC1738));
+                    $client = new GuzzleClient($this->urlAccessToken() . '?' . http_build_query($requestParams,'','&'));
                     $request = $client->send();
                     $response = $request->getBody();
                     break;
